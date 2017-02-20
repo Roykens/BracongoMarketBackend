@@ -1,0 +1,27 @@
+<div>
+    Hello, {{nom}}
+    <button type="submit" class="btn btn-primary"  ng-click="toto()">
+      <i class="glyphicon glyphicon-saved"></i> Enregistrer
+    </button>
+    
+     
+    <form name="form" method="post" role="form" class="form-horizontal" novalidate>
+            <div class="form-group">
+                <label for="code" class="col-sm-2 control-label">Fichier</label>
+                <div class="col-sm-6">
+                    <input type="file" name="fichier" id="code"  class="form-control" ng-required="true" onchange="angular.element(this).scope().uploadFile(this.files)" base-sixty-four-input ng-model="files"/>
+                    <span class="error" ng-show="form.code.$dirty && form.code.$error.required">Le fichier est obligatoire</span>
+                </div>
+            </div>
+         
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-success btn-s" ng-click="form.$valid && valider()">
+                        <span class="glyphicon glyphicon-upload"></span> Charger
+                    </button>
+                </div>
+            </div>
+        </form>
+    <img data-ng-src="data:image/png;base64,{{files.base64}}"/>
+      <img data-ng-src="data:image/png;base64,W29iamVjdCBGaWxlXQ=="/>
+</div>

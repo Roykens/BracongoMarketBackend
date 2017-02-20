@@ -28,7 +28,14 @@ function() {
 }]).controller("ImportationNoteController", ["$scope",
 function() {
 
-}]).controller("ExportationNoteController", ["$scope",
+}]).controller("EventController", ["$scope",
+function() {
+
+}]).controller("ActuController", ["$scope",
+function() {
+
+}])
+.controller("ExportationNoteController", ["$scope",
 function() {
 
 }]).controller("PVController", ["$scope",

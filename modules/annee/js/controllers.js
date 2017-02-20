@@ -1,5 +1,12 @@
-angular.module("notesApp.annees.controllers", []).controller("AnneeController", ["$scope", "$modal", "$log", "Annee",
-    function ($scope, $modal, $log, Annee) {
+angular.module("notesApp.annees.controllers", []).controller("AnneeController", ["$scope", "$modal", "$log", "Annee","$firebaseArray", "$firebaseObject",
+    function ($scope, $modal, $log, Annee,$firebaseArray, $firebaseObject) {
+         $scope.toto = function(){
+           console.log("Hellloooooo");
+           var database = firebase.database().ref();
+             var refEvent = database.child('events');
+            $scope.events = $firebaseArray(refEvent);
+            console.log("Events",$scope.events);
+       }
         var deps = Annee.query(function () {
             $scope.annees = _.sortBy(deps,'debut');
         });
