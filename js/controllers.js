@@ -35,6 +35,18 @@ function() {
 function() {
 
 }])
+    .controller("TestController", ["$scope",
+function() {
+
+}])
+    .controller("JeuxController", ["$scope",
+function() {
+
+}])
+.controller("JobsController", ["$scope",
+function() {
+
+}])
 .controller("ExportationNoteController", ["$scope",
 function() {
 

@@ -1,17 +1,17 @@
-angular.module("notesApp.actus.controllers", []).controller("ActuController", ["$scope", "$modal", "$log", "CampagneService",
-    function ($scope, $modal, $log, CampagneService) {
+angular.module("notesApp.jobs.controllers", []).controller("JobsController", ["$scope", "$modal", "$log", "JobService",
+    function ($scope, $modal, $log, JobService) {
       /*  var deps = Annee.query(function () {
             $scope.annees = _.sortBy(deps,'debut');
         });
         */
-       $scope.campagnes = [];
-       $scope.campagnes = CampagneService.getAllCampagnes();
+       $scope.jobs = [];
+       $scope.jobs = JobService.getAllJobs();
        $scope.toto = "Moi";
         $scope.afficherFenetre = function (key,item) {
             var modelInstance = $modal.open({
-                templateUrl: '/modules/actu/views/nouveau.html',
-                controller: 'CampagneFenetreController',
-                controllerAs: 'campagne',
+                templateUrl: '/modules/jobs/views/nouveau.html',
+                controller: 'JobFenetreController',
+                controllerAs: 'job',
                 keyboard: true,
                 backdrop: false
                
@@ -42,11 +42,11 @@ angular.module("notesApp.actus.controllers", []).controller("ActuController", ["
                 });
             }
         };
-    }]).controller("CampagneFenetreController", ["$log", "$scope", "$modalInstance","$base64",
+    }]).controller("JobFenetreController", ["$log", "$scope", "$modalInstance","$base64",
     function ($log, $scope, $modalInstance,$base64) {
         $scope.files = null;
        $scope.image = null;
-       $scope.campagne = null;
+       $scope.job = null;
        
        $scope.uploadFile = function(fs){
            $scope.files = fs;
@@ -54,16 +54,16 @@ angular.module("notesApp.actus.controllers", []).controller("ActuController", ["
       
         $scope.valider = function () {
             $log.log("version ok");
-            var refEvent = firebase.database().ref().child("campagnes");
+            var refJob = firebase.database().ref().child("emplois");
          //  console.log("img",$scope.files);
          //  console.log("img1",$scope.files[0]);
          //  var imageData=$base64.encode($scope.files);
           // var imageData1=$base64.encode($scope.files[0]);
          //  console.log("img2",imageData);
          //  console.log("img3",imageData1);
-           $scope.campagne.image = $scope.files.base64;
-           console.log("la données", $scope.campagne);
-           refEvent.push($scope.campagne);
+           $scope.job.image = $scope.files.base64;
+           console.log("la données", $scope.job);
+            refJob.push($scope.job);
            $modalInstance.close();
         };
 

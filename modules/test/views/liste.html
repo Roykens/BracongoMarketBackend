@@ -1,31 +1,23 @@
 <div>
-    <h3 class ="titre">LA LISTE DES Evènements</h3>
+    <h3 class ="titre">LA LISTE DES TEST</h3>
     <table class="table table-bordered table-hover table-condensed table-striped">
         <thead>
             <tr class="success">
                 <th>Numero</th>
-                <th>Adresse</th>
-                <th>Contact</th>
+                <th>Code</th>
+                <th>nom</th>
                 <th>description</th>
-                <th>Date</th>
-                <th>Heure</th>
-                <th>Lieu</th>
-                <th>Titre</th>
-                <th>Image</th>
+                <th>image</th>
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="(key,event) in events " class="inverse">
+            <tr ng-repeat="(key,test) in tests " class="inverse">
                 <td>{{$index + 1}}</td>
-                <td>{{event.adresse}}</td>
-                <td>{{event.contact}}</td>
-                <td>{{event.description}}</td>
-                <td>{{event.date}}</td>
-                <td>{{event.heure}}</td>
-                <td>{{event.lieu}}</td>
-                <td>{{event.titre}}</td>
-                <td><img data-ng-src="data:image/jpeg;base64,{{event.image}}"/></td>
-                <td><a ng-click="afficherFenetre(key, event)"><i class="glyphicon glyphicon-edit"></i> Modifier</a> | <a ng-click="supprimerDepartement(key,event)"> <i class="glyphicon glyphicon-remove"></i> Supprimer</a></td>
+                <td>{{test.code}}</td>
+                <td>{{test.nom}}</td>
+                <td>{{test.decription}}</td>
+                <td><img data-ng-src="data:image/jpeg;base64,{{test.image}}"/></td>
+                <td><a ng-click="afficherFenetre(key, test)"><i class="glyphicon glyphicon-edit"></i> Modifier</a> | <a ng-click="supprimerDepartement(key,test)"> <i class="glyphicon glyphicon-remove"></i> Supprimer</a></td>
             </tr>
         </tbody>
     </table>

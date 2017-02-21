@@ -1,31 +1,24 @@
 <div>
-    <h3 class ="titre">LA LISTE DES Evènements</h3>
+    <h3 class ="titre">LA LISTE DES JEUX</h3>
     <table class="table table-bordered table-hover table-condensed table-striped">
         <thead>
             <tr class="success">
                 <th>Numero</th>
-                <th>Adresse</th>
-                <th>Contact</th>
-                <th>description</th>
-                <th>Date</th>
-                <th>Heure</th>
-                <th>Lieu</th>
                 <th>Titre</th>
+                <th>Description</th>
+                <th>Date</th>
                 <th>Image</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="(key,event) in events " class="inverse">
+            <tr ng-repeat="(key,jeu) in jeux " class="inverse">
                 <td>{{$index + 1}}</td>
-                <td>{{event.adresse}}</td>
-                <td>{{event.contact}}</td>
-                <td>{{event.description}}</td>
-                <td>{{event.date}}</td>
-                <td>{{event.heure}}</td>
-                <td>{{event.lieu}}</td>
-                <td>{{event.titre}}</td>
-                <td><img data-ng-src="data:image/jpeg;base64,{{event.image}}"/></td>
-                <td><a ng-click="afficherFenetre(key, event)"><i class="glyphicon glyphicon-edit"></i> Modifier</a> | <a ng-click="supprimerDepartement(key,event)"> <i class="glyphicon glyphicon-remove"></i> Supprimer</a></td>
+                <td>{{jeu.titre}}</td>
+                <td>{{jeu.description}}</td>
+                <td>{{jeu.date}}</td>
+                <td><img data-ng-src="data:image/jpeg;base64,{{jeu.image}}"/></td>
+                <td><a ng-click="afficherFenetre(key, jeu)"><i class="glyphicon glyphicon-edit"></i> Modifier</a> | <a ng-click="supprimerDepartement(key,jeu)"> <i class="glyphicon glyphicon-remove"></i> Supprimer</a></td>
             </tr>
         </tbody>
     </table>

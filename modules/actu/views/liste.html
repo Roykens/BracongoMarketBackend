@@ -1,3 +1,35 @@
 <div>
-    Actu, {{toto}}
+    <h3 class ="titre">LA LISTE DES Campagnes</h3>
+    <table class="table table-bordered table-hover table-condensed table-striped">
+        <thead>
+            <tr class="success">
+                <th>Numero</th>
+                <th>Titre</th>
+                <th>description</th>
+                <th>Date</th>
+                <th>Image</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="(key,campagne) in campagnes " class="inverse">
+                <td>{{$index + 1}}</td>
+                <td>{{campagne.titre}}</td>
+                <td>{{campagne.decription}}</td>
+                <td>{{campagne.date}}</td>
+                <td><img data-ng-src="data:image/jpeg;base64,{{campagne.image}}"/></td>
+                <td><a ng-click="afficherFenetre(key, campagne)"><i class="glyphicon glyphicon-edit"></i> Modifier</a> | <a ng-click="supprimerDepartement(key,campagne)"> <i class="glyphicon glyphicon-remove"></i> Supprimer</a></td>
+            </tr>
+        </tbody>
+    </table>
+    <pagination  boundary-links="true" total-items="totalItems" ng-model="currentPage" ng-change="pageChanged()" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></pagination>
+    <form>
+        <button class="btn btn-primary" ng-click="afficherFenetre()"><i class="glyphicon glyphicon-save"></i> Ajouter</button>
+    </form>
+<!--    <div ng-controller="PaginationDemoCtrl">
+        <pagination  boundary-links="true" total-items="totalItems" ng-model="currentPage" ng-change="pageChanged()" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></pagination>
+    </div>-->
 </div>
+
+
+
+

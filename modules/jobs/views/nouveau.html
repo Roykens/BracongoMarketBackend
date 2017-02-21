@@ -1,47 +1,54 @@
 <div class="panel panel-primary">
     <div class="panel-heading" >
-        Ajout d'une nouvelle Campagne
+        Ajout d'un nouveau job
     </div>
    
     <div class="panel-body">
         <form name="form" method="post" role="form" class="form-horizontal" novalidate>
-            <div class="form-group">
-                <label for="fichier" class="col-sm-2 control-label">Fichier</label>
-                <div class="col-sm-6">
-                    <input type="file" name="fichier" id="fichier"  class="form-control" ng-required="true" onchange="angular.element(this).scope().uploadFile(this.files)" base-sixty-four-input ng-model="files"/>
-                    <span class="error" ng-show="form.fichier.$dirty && form.fichier.$error.required">Le fichier est obligatoire</span>
-                </div>
-            </div>
-            
+           
             <div class="form-group">
                 <label for="titre" class="col-sm-2 control-label">Titre</label>
                 <div class="col-sm-8">
-                    <input type="text" name="titre" id="titre" class="form-control" ng-model="campagne.titre" ng-required="true"/>
+                    <input type="text" name="titre" id="titre" class="form-control" ng-model="job.titre" ng-required="true"/>
                     <span class="error" ng-show="form.titre.$dirty && form.titre.$error.required">Le titre est obligatoire</span>
                 </div>
             </div>
             <div class="form-group">
                 <label for="description" class="col-sm-2 control-label">Description</label>
                 <div class="col-sm-8">
-                    <input type="text" name="description" id="description" class="form-control" ng-model="campagne.description" ng-required="true"/>
+                    <input type="text" name="description" id="description" class="form-control" ng-model="job.description" ng-required="true"/>
                     <span class="error" ng-show="form.description.$dirty && form.description.$error.required">La description est obligado</span>
                 </div>
             </div>
-           <div class="form-group">
+            <div class="form-group">
+                <label for="mission" class="col-sm-2 control-label">Mission</label>
+                <div class="col-sm-8">
+                    <input type="text" name="mission" id="mission" class="form-control" ng-model="job.mission" ng-required="true"/>
+                    <span class="error" ng-show="form.mission.$dirty && form.mission.$error.required">La mission est obligado</span>
+                </div>
+            </div>
+            <div class="form-group">
                 <label for="date" class="col-sm-2 control-label">Date</label>
                 <div class="col-sm-8">
-                    <input type="text" name="date" id="date" class="form-control" ng-model="event.date" ng-required="true"/>
+                    <input type="text" name="date" id="date" class="form-control" ng-model="job.date" ng-required="true"/>
                     <span class="error" ng-show="form.date.$dirty && form.date.$error.required">La date est obligado</span>
                 </div>
             </div>
-            <div class="form-group">
-                <label for="heure" class="col-sm-2 control-label">Heure</label>
+         <div class="form-group">
+                <label for="profil" class="col-sm-2 control-label">Profil recherché</label>
                 <div class="col-sm-8">
-                    <input type="text" name="heure" id="heure" class="form-control" ng-model="event.heure" ng-required="true"/>
-                    <span class="error" ng-show="form.heure.$dirty && form.heure.$error.required">L'heure est obligado</span>
+                    <input type="text" name="date" id="profil" class="form-control" ng-model="job.profil" ng-required="true"/>
+                    <span class="error" ng-show="form.profil.$dirty && form.profil.$error.required">Le profil est obligado</span>
                 </div>
             </div>
             <div class="form-group">
+                <label for="ref" class="col-sm-2 control-label">Reférence</label>
+                <div class="col-sm-8">
+                    <input type="text" name="ref" id="ref" class="form-control" ng-model="job.reference" ng-required="true"/>
+                    <span class="error" ng-show="form.ref.$dirty && form.ref.$error.required">Le profil est obligado</span>
+                </div>
+            </div>
+           <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
                     
                     <button type="submit" class="btn btn-primary"  ng-click="form.$valid && valider()">
