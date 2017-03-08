@@ -47,6 +47,14 @@ function() {
 function() {
 
 }])
+.controller("CategorieController", ["$scope",
+function() {
+
+}])
+.controller("VinController", ["$scope",
+function() {
+
+}])
 .controller("ExportationNoteController", ["$scope",
 function() {
 
