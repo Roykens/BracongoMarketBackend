@@ -8,6 +8,8 @@
         <link href="css/bootstrap-theme.css" rel="stylesheet">
         <link href="css/ng-tags-input.bootstrap.css" rel="stylesheet">
         <link href="css/ng-tags-input.css" rel="stylesheet">
+        <link rel="stylesheet" href="//cdn.rawgit.com/indrimuska/angular-selector/master/dist/angular-selector.css">
+        
         <link href="css/notes.css" rel="stylesheet">
     </head>
     <body>
@@ -141,6 +143,17 @@
                             <li>
                                 <a ui-sref="jobs"><i class="glyphicon glyphicon-retweet"></i> Jobs</a>
                             </li>
+                            <li class="dropdown" dropdown on-toggle="toggled(open)">
+                                <a class="dropdown-toggle" dropdown-toggle> <i class="glyphicon glyphicon-folder-open"></i>  Clé des châteaux<b class="caret"></b></a>
+                                <ul class="dropdown-menu info" role="menu">
+                                    <li>
+                                        <a ui-sref="categories">Categorie</a>
+                                    </li>
+                                    <li>
+                                        <a ui-sref="vins">Produits</a>
+                                    </li>
+                                </ul>
+                            </li>
                         </ul>
                     </nav>
                     <div id="content">
@@ -172,6 +185,7 @@
         <script  src="lib/angular-base64-upload.js"></script>
         <script   src="lib/firebase/firebase.js"></script>
         <script  src="lib/angularfire/dist/angularfire.min.js"></script>
+        	<script src="//cdn.rawgit.com/indrimuska/angular-selector/master/dist/angular-selector.js"></script>
         <script>
           // Initialize Firebase
           var config = {
@@ -214,6 +228,14 @@
         <script src="modules/jobs/jobsModule.js"></script>
         <script src="modules/jobs/js/controllers.js"></script>
         <script src="modules/jobs/js/services.js"></script>
+        
+        <script src="modules/categories/categorieModule.js"></script>
+        <script src="modules/categories/js/controllers.js"></script>
+        <script src="modules/categories/js/services.js"></script>
+        
+        <script src="modules/vins/vinModule.js"></script>
+        <script src="modules/vins/js/controllers.js"></script>
+        <script src="modules/vins/js/services.js"></script>
         
         <script src="modules/typecours/typecoursModule.js"></script>
         <script src="modules/typecours/js/controllers.js"></script>

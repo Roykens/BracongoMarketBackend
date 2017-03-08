@@ -1,0 +1,33 @@
+<div>
+    <h3 class ="titre">LA LISTE DES CATEGORIES</h3>
+    <table class="table table-bordered table-hover table-condensed table-striped">
+        <thead>
+            <tr class="success">
+                <th>Numero</th>
+                <th>Nom</th>
+                <th>Code</th>
+                <th>Image</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="(key,categorie) in categories " class="inverse">
+                <td>{{$index + 1}}</td>
+                <td>{{categorie.nom}}</td>
+                <td>{{categorie.code}}</td>
+                <td><img data-ng-src="data:image/jpeg;base64,{{categorie.image}}" style="width: 100px; height: 150px;"/></td>
+                <td><a ng-click="afficherFenetre(key, categorie)"><i class="glyphicon glyphicon-edit"></i> Modifier</a> | <a ng-click="supprimerDepartement(key,categorie)"> <i class="glyphicon glyphicon-remove"></i> Supprimer</a></td>
+            </tr>
+        </tbody>
+    </table>
+    <pagination  boundary-links="true" total-items="totalItems" ng-model="currentPage" ng-change="pageChanged()" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></pagination>
+    <form>
+        <button class="btn btn-primary" ng-click="afficherFenetre()"><i class="glyphicon glyphicon-save"></i> Ajouter</button>
+    </form>
+<!--    <div ng-controller="PaginationDemoCtrl">
+        <pagination  boundary-links="true" total-items="totalItems" ng-model="currentPage" ng-change="pageChanged()" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></pagination>
+    </div>-->
+</div>
+
+
+
+
