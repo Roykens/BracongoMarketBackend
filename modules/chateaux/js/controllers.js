@@ -1,4 +1,4 @@
-angular.module("notesApp.chateaux.controllers", []).controller("AccueilController", ["$scope", "$modal", "$log", "ChateauxService",
+angular.module("notesApp.chateaux.controllers", []).controller("ChateauxController", ["$scope", "$modal", "$log", "ChateauxService",
     function ($scope, $modal, $log, ChateauxService) {
        $scope.images = [];
        $scope.images = ChateauxService.getAllImages();

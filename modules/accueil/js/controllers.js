@@ -1,4 +1,4 @@
-angular.module("notesApp.accueil.controllers", []).controller("ChateauxController", ["$scope", "$modal", "$log", "AccueilService",
+angular.module("notesApp.accueil.controllers", []).controller("AccueilController", ["$scope", "$modal", "$log", "AccueilService",
     function ($scope, $modal, $log, AccueilService) {
        $scope.images = [];
        $scope.images = AccueilService.getAllImages();
@@ -48,7 +48,8 @@ angular.module("notesApp.accueil.controllers", []).controller("ChateauxControlle
       
        $scope.valider = function () {
             $log.log("test");
-            var refEvent = firebase.database().ref().child("chateauxImage");
+            var refEvent = firebase.database().ref().child("accueilImage");
+            console.log("accueil");
             var refStockage = firebase.storage().ref();
             console.log("img", $scope.files);
             var uploadTask = refStockage.child('images/accueil/' + $scope.files[0].name).put($scope.files[0]);
