@@ -1,21 +1,25 @@
 <div>
-    <h3 class ="titre">LA LISTE DES CATEGORIES</h3>
+    <h3 class ="titre">LA LISTE DES CAMPAGNES</h3>
     <table class="table table-bordered table-hover table-condensed table-striped">
         <thead>
             <tr class="success">
                 <th>Numero</th>
-                <th>Nom</th>
-                <th>CodeCategorie</th>
+                <th>Titre</th>
+                <th>Description</th>
+                <th>Date</th>
+                <th>Video</th>
                 <th>Image</th>
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="(key,vin) in vins " class="inverse">
+            <tr ng-repeat="(key,campagne) in campagnes " class="inverse">
                 <td>{{$index + 1}}</td>
-                <td>{{vin.nom}}</td>
-                <td>{{vin.categorie}}</td>               
-                <td><img src="{{vin.image}}" style="width: 100px; height: 150px;"/></td>
-                <td><a ng-click="afficherFenetre(key, vin)"><i class="glyphicon glyphicon-edit"></i> Modifier</a> | <a ng-click="supprimerDepartement(key,vin)"> <i class="glyphicon glyphicon-remove"></i> Supprimer</a></td>
+                <td>{{campagne.titre}}</td>
+                <td>{{campagne.description}}</td>
+                <td>{{campagne.date}}</td>
+                <td>{{campagne.video}}</td>
+                <td><img data-ng-src="{{campagne.image}}" style="width: 100px; height: 150px;"/></td>
+                <td><a ng-click="afficherFenetre(key, campagne)"><i class="glyphicon glyphicon-edit"></i> Modifier</a> | <a ng-click="supprimerDepartement(key,categorie)"> <i class="glyphicon glyphicon-remove"></i> Supprimer</a></td>
             </tr>
         </tbody>
     </table>

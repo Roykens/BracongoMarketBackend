@@ -1,20 +1,15 @@
-angular.module("notesApp.jeux.controllers", []).controller("JeuxController", ["$scope", "$modal", "$log", "JeuxService",
-    function ($scope, $modal, $log, JeuxService) {
-      /*  var deps = Annee.query(function () {
-            $scope.annees = _.sortBy(deps,'debut');
-        });
-        */
-       $scope.jeux = [];
-       $scope.jeux = JeuxService.getAllJeux();
+angular.module("notesApp.accueil.controllers", []).controller("ChateauxController", ["$scope", "$modal", "$log", "AccueilService",
+    function ($scope, $modal, $log, AccueilService) {
+       $scope.images = [];
+       $scope.images = AccueilService.getAllImages();
        $scope.toto = "Moi";
-        $scope.afficherFenetre = function (key,item) {
+       $scope.afficherFenetre = function (key,item) {
             var modelInstance = $modal.open({
-                templateUrl: '/modules/jeux/views/nouveau.html',
-                controller: 'JeuxFenetreController',
-                controllerAs: 'jeux',
+                templateUrl: '/modules/accueil/views/nouveau.html',
+                controller: 'AccueilFenetreController',
+                controllerAs: 'accueil',
                 keyboard: true,
-                backdrop: false
-               
+                backdrop: false              
             });
             modelInstance.result.then(function (item) {
                 //
@@ -34,7 +29,6 @@ angular.module("notesApp.jeux.controllers", []).controller("JeuxController", ["$
                             id = i;
                             break;
                         }
-
                     }
                     if (id) {
                         $scope.annees.splice(id, 1);
@@ -42,22 +36,22 @@ angular.module("notesApp.jeux.controllers", []).controller("JeuxController", ["$
                 });
             }
         };
-    }]).controller("JeuxFenetreController", ["$log", "$scope", "$modalInstance","$base64",
+    }]).controller("AccueilFenetreController", ["$log", "$scope", "$modalInstance","$base64",
     function ($log, $scope, $modalInstance,$base64) {
         $scope.files = null;
        $scope.image = null;
-       $scope.jeu = null;
+       $scope.accueil = null;
        
        $scope.uploadFile = function(fs){
            $scope.files = fs;
        };
       
-        $scope.valider = function () {
+       $scope.valider = function () {
             $log.log("test");
-            var refEvent = firebase.database().ref().child("jeux");
+            var refEvent = firebase.database().ref().child("chateauxImage");
             var refStockage = firebase.storage().ref();
             console.log("img", $scope.files);
-            var uploadTask = refStockage.child('images/concours/' + $scope.files[0].name).put($scope.files[0]);
+            var uploadTask = refStockage.child('images/accueil/' + $scope.files[0].name).put($scope.files[0]);
             uploadTask.on('state_changed', function (snapshot) {
                 // Observe state change events such as progress, pause, and resume
                 // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
@@ -79,9 +73,9 @@ angular.module("notesApp.jeux.controllers", []).controller("JeuxController", ["$
                 // For instance, get the download URL: https://firebasestorage.googleapis.com/...
                 var downloadURL = uploadTask.snapshot.downloadURL;
                 console.log("L'URL", downloadURL);
-                $scope.jeu.image=downloadURL;
-                console.log("J'envoie finalement",$scope.jeu);
-                refEvent.push($scope.jeu);
+                $scope.accueil.image=downloadURL;
+                console.log("J'envoie finalement",$scope.accueil);
+                refEvent.push($scope.accueil);
             });
             $modalInstance.close();
         };

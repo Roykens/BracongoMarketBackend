@@ -1,21 +1,19 @@
 <div>
-    <h3 class ="titre">LA LISTE DES CATEGORIES</h3>
+    <h3 class ="titre">LA LISTE DES IMAGES</h3>
     <table class="table table-bordered table-hover table-condensed table-striped">
         <thead>
             <tr class="success">
                 <th>Numero</th>
-                <th>Nom</th>
-                <th>CodeCategorie</th>
+                <th>Titre</th>
                 <th>Image</th>
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="(key,vin) in vins " class="inverse">
+            <tr ng-repeat="(key,image) in images " class="inverse">
                 <td>{{$index + 1}}</td>
-                <td>{{vin.nom}}</td>
-                <td>{{vin.categorie}}</td>               
-                <td><img src="{{vin.image}}" style="width: 100px; height: 150px;"/></td>
-                <td><a ng-click="afficherFenetre(key, vin)"><i class="glyphicon glyphicon-edit"></i> Modifier</a> | <a ng-click="supprimerDepartement(key,vin)"> <i class="glyphicon glyphicon-remove"></i> Supprimer</a></td>
+                <td>{{image.titre}}</td>
+                <td><img data-ng-src="{{image.image}}" style="width: 100px; height: 150px;"/></td>
+                <td><a ng-click="afficherFenetre(key, image)"><i class="glyphicon glyphicon-edit"></i> Modifier</a> | <a ng-click="supprimerDepartement(key,image)"> <i class="glyphicon glyphicon-remove"></i> Supprimer</a></td>
             </tr>
         </tbody>
     </table>

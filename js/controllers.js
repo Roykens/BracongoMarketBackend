@@ -1,33 +1,6 @@
 angular.module("notesApp.controllers", []).controller("MenuController", ["$scope", "$log",
 function($scope, $log) {
 
-}]).controller("AnneeController", ["$scope",
-function() {
-
-}]).controller("CoursController", ["$scope",
-function() {
-
-}]).controller("TypeCoursController", ["$scope",
-function() {
-
-}]).controller("UniteController", ["$scope",
-function() {
-
-}]).controller("ProgrammeController", ["$scope",
-function() {
-
-}]).controller("ImportationEtudiantController", ["$scope",
-function() {
-
-}]).controller("ExportationEtudiantController", ["$scope",
-function() {
-
-}]).controller("ListeEtudiantController", ["$scope",
-function() {
-
-}]).controller("ImportationNoteController", ["$scope",
-function() {
-
 }]).controller("EventController", ["$scope",
 function() {
 
@@ -51,26 +24,31 @@ function() {
 function() {
 
 }])
+.controller("CategorieBracController", ["$scope",
+function() {
+
+}])
 .controller("VinController", ["$scope",
 function() {
 
 }])
-.controller("ExportationNoteController", ["$scope",
+.controller("CampagneController", ["$scope",
 function() {
 
-}]).controller("PVController", ["$scope",
+}])
+.controller("ProduitController", ["$scope",
 function() {
 
-}]).controller("SyntheseController", ["$scope",
+}])
+.controller("AccueilController", ["$scope",
 function() {
 
-}]).controller("ReleveController", ["$scope",
+}])
+.controller("ChateauxController", ["$scope",
 function() {
 
-}]).controller("StatistiqueController", ["$scope",
-function() {
-
-}]).controller("PassageController", ["$scope",
+}])
+.controller("FeteController", ["$scope",
 function() {
 
 }]);

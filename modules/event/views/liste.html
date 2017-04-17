@@ -24,7 +24,7 @@
                 <td>{{event.heure}}</td>
                 <td>{{event.lieu}}</td>
                 <td>{{event.titre}}</td>
-                <td><img data-ng-src="data:image/jpeg;base64,{{event.image}}"/></td>
+                <td><img ng-src="{{event.image}}" style="width: 100px; height: 150px;"/></td>
                 <td><a ng-click="afficherFenetre(key, event)"><i class="glyphicon glyphicon-edit"></i> Modifier</a> | <a ng-click="supprimerDepartement(key,event)"> <i class="glyphicon glyphicon-remove"></i> Supprimer</a></td>
             </tr>
         </tbody>

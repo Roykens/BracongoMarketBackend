@@ -6,15 +6,25 @@
                 <th>Numero</th>
                 <th>Nom</th>
                 <th>CodeCategorie</th>
+                <th>Conditionnement</th>
+                <th>Type</th>
+                <th>Tauc alcool</th>
+                <th>Slogan</th>
+                <th>Signature</th>
                 <th>Image</th>
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="(key,vin) in vins " class="inverse">
+            <tr ng-repeat="(key,produit) in produits " class="inverse">
                 <td>{{$index + 1}}</td>
-                <td>{{vin.nom}}</td>
-                <td>{{vin.categorie}}</td>               
-                <td><img src="{{vin.image}}" style="width: 100px; height: 150px;"/></td>
+                <td>{{produit.nom}}</td>
+                <td>{{produit.categorie}}</td>
+                <td>{{produit.condi}}</td>
+                <td>{{produit.type}}</td>
+                <td>{{produit.tauxAlco}}</td>
+                <td>{{produit.slogan}}</td> 
+                <td>{{produit.signature}}</td> 
+                <td><img ng-src="{{produit.image}}" style="width: 100px; height: 150px;"/></td>
                 <td><a ng-click="afficherFenetre(key, vin)"><i class="glyphicon glyphicon-edit"></i> Modifier</a> | <a ng-click="supprimerDepartement(key,vin)"> <i class="glyphicon glyphicon-remove"></i> Supprimer</a></td>
             </tr>
         </tbody>

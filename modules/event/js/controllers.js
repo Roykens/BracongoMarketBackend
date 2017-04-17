@@ -51,20 +51,39 @@ angular.module("notesApp.events.controllers", []).controller("EventController", 
        $scope.uploadFile = function(fs){
            $scope.files = fs;
        };
-      
+  
         $scope.valider = function () {
-            $log.log("version ok");
+            $log.log("test");
             var refEvent = firebase.database().ref().child("events");
-         //  console.log("img",$scope.files);
-         //  console.log("img1",$scope.files[0]);
-         //  var imageData=$base64.encode($scope.files);
-          // var imageData1=$base64.encode($scope.files[0]);
-         //  console.log("img2",imageData);
-         //  console.log("img3",imageData1);
-           $scope.event.image = $scope.files.base64;
-           console.log("la données", $scope.event);
-            refEvent.push($scope.event);
-           $modalInstance.close();
+            var refStockage = firebase.storage().ref();
+            console.log("img", $scope.files);
+            var uploadTask = refStockage.child('images/evenements/' + $scope.files[0].name).put($scope.files[0]);
+            uploadTask.on('state_changed', function (snapshot) {
+                // Observe state change events such as progress, pause, and resume
+                // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
+                var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                console.log('Upload is ' + progress + '% done');
+                switch (snapshot.state) {
+                    case firebase.storage.TaskState.PAUSED: // or 'paused'
+                        console.log('Upload is paused');
+                        break;
+                    case firebase.storage.TaskState.RUNNING: // or 'running'
+                        console.log('Upload is running');
+                        break;
+                }
+            }, function (error) {
+                // Handle unsuccessful uploads
+                console.log("Error",error);
+            }, function () {
+                // Handle successful uploads on complete
+                // For instance, get the download URL: https://firebasestorage.googleapis.com/...
+                var downloadURL = uploadTask.snapshot.downloadURL;
+                console.log("L'URL", downloadURL);
+                $scope.event.image=downloadURL;
+                console.log("J'envoie finalement",$scope.event);
+                refEvent.push($scope.event);
+            });
+            $modalInstance.close();
         };
 
         $scope.cancel = function () {

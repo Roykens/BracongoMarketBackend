@@ -1,13 +1,13 @@
-angular.module("notesApp.vins.controllers", []).controller("VinController", ["$scope", "$modal", "$log", "VinService",
-    function ($scope, $modal, $log, VinService) {
-       $scope.vins = [];
-       $scope.vins = VinService.getAllVins();
+angular.module("notesApp.produits.controllers", []).controller("ProduitController", ["$scope", "$modal", "$log", "ProduitService",
+    function ($scope, $modal, $log, ProduitService) {
+       $scope.produits = [];
+       $scope.produits = ProduitService.getAllProduits();
        $scope.toto = "Moi";
        $scope.afficherFenetre = function (key,item) {
             var modelInstance = $modal.open({
-                templateUrl: '/modules/vins/views/nouveau.html',
-                controller: 'VinFenetreController',
-                controllerAs: 'vin',
+                templateUrl: '/modules/produits/views/nouveau.html',
+                controller: 'ProduitFenetreController',
+                controllerAs: 'Produit',
                 keyboard: true,
                 backdrop: false              
             });
@@ -35,15 +35,15 @@ angular.module("notesApp.vins.controllers", []).controller("VinController", ["$s
                 });
             }
         };
-    }]).controller("VinFenetreController", ["$log", "$scope", "$modalInstance","$base64","$modal",
+    }]).controller("ProduitFenetreController", ["$log", "$scope", "$modalInstance","$base64","$modal",
     function ($log, $scope, $modalInstance,$base64,$modal) {
         $scope.prix1=null;
         $scope.prix2=null;
         $scope.prix3=null;
         $scope.files = null;
        $scope.image = null;
-       $scope.vin = null;
-       $scope.catgoriesList = ["ROUGES" ,"BLANCS" ,"ROSES","CHAMP","VERY","COMPAL" ];
+       $scope.produit = null;
+       $scope.catgoriesList = ["BI" ,"BG" ,"EAU" ];
        $scope.pri = [];
        $scope.prix=[
            {volume:"1,5L",valeur:"61.000"},{volume:"75CL",valeur:"61.000"},{volume:"37,5CL",valeur:"61.000"}
@@ -53,10 +53,9 @@ angular.module("notesApp.vins.controllers", []).controller("VinController", ["$s
            $scope.pri.push($scope.prix);
        };
        
-       $scope.uploadFile = function (fs) {
-            console.log("immmmmmmmmm");
-            $scope.files = fs;
-        };
+       $scope.uploadFile = function(fs){
+           $scope.files = fs;
+       };
        
        $scope.addOne = function(){
            $scope.pri.push($scope.prix1);
@@ -76,62 +75,12 @@ angular.module("notesApp.vins.controllers", []).controller("VinController", ["$s
        };
       
         $scope.valider = function () {
-            $log.log("test");
-            var refEvent = firebase.database().ref().child("vins");
+            $log.log("version ok");
+            var refProduit = firebase.database().ref().child("produits");
             //$scope.vin.image = $scope.files.base64;
             //$scope.vin.prix = $scope.pri;
-            //console.log("la données", $scope.vin);
-            var refStockage = firebase.storage().ref();
-            console.log("img", $scope.files);
-            //console.log("la données", $scope.test);
-            console.log("l'image", $scope.files);
-            console.log("l'image2", $scope.files[0]);
-            var dossier;
-            if($scope.vin.categorie === "ROUGES"){
-                dossier = "vins rouges";
-            }
-            if($scope.vin.categorie === "BLANCS"){
-                dossier = "vins blancs";
-            }
-            if($scope.vin.categorie === "ROSES"){
-                dossier = "vins roses";
-            }
-            if($scope.vin.categorie === "CHAMP"){
-                dossier = "champagnes";
-            }
-            if($scope.vin.categorie === "VERY"){
-                dossier = "very";
-            }
-            if($scope.vin.categorie === "COMPAL"){
-                dossier = "compal";
-            }
-            
-            var uploadTask = refStockage.child('images/chateaux/produits'+'/'+ dossier+'/' + $scope.files[0].name).put($scope.files[0]);
-            uploadTask.on('state_changed', function (snapshot) {
-                // Observe state change events such as progress, pause, and resume
-                // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
-                var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-                console.log('Upload is ' + progress + '% done');
-                switch (snapshot.state) {
-                    case firebase.storage.TaskState.PAUSED: // or 'paused'
-                        console.log('Upload is paused');
-                        break;
-                    case firebase.storage.TaskState.RUNNING: // or 'running'
-                        console.log('Upload is running');
-                        break;
-                }
-            }, function (error) {
-                // Handle unsuccessful uploads
-                console.log("Error",error);
-            }, function () {
-                // Handle successful uploads on complete
-                // For instance, get the download URL: https://firebasestorage.googleapis.com/...
-                var downloadURL = uploadTask.snapshot.downloadURL;
-                console.log("L'URL", downloadURL);
-                $scope.vin.image=downloadURL;
-                console.log("J'envoie finalement",$scope.vin);
-                refEvent.push($scope.vin);
-            });
+            console.log("la données", $scope.produit);
+            refProduit.push($scope.produit);
             $modalInstance.close();
         };
 

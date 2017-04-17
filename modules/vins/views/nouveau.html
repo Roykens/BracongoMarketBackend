@@ -5,14 +5,30 @@
 
     <div class="panel-body">
         <form name="form" method="post" role="form" class="form-horizontal" novalidate>
-            <div class="form-group">
+           <!-- <div class="form-group">
                 <label for="fichier" class="col-sm-2 control-label">Fichier</label>
                 <div class="col-sm-6">
                     <input type="file" name="fichier" id="fichier"  class="form-control" ng-required="true" onchange="angular.element(this).scope().uploadFile(this.files)" base-sixty-four-input ng-model="files"/>
                     <span class="error" ng-show="form.fichier.$dirty && form.fichier.$error.required">Le fichier est obligatoire</span>
                 </div>
             </div>
-
+            -->
+            <!--
+            <div class="form-group">
+                <label for="image" class="col-sm-2 control-label">Image</label>
+                <div class="col-sm-8">
+                    <input type="text" name="image" id="image" class="form-control" ng-model="vin.image" ng-required="true"/>
+                    <span class="error" ng-show="form.image.$dirty && form.image.$error.required">Le Nom est obligatoire</span>
+                </div>
+            </div>
+            -->
+            <div class="form-group">
+                <label for="file" class="col-sm-2 control-label">Fichier</label>
+                <div class="col-sm-6">
+                    <input id= "file" type="file" ngf-select ng-model="files" name="file" ngf-pattern="'image/*'" ngf-accept="'image/*'" ngf-max-size="20MB" onchange="angular.element(this).scope().uploadFile(this.files)"/>Image
+                    
+                </div>
+            </div>
             <div class="form-group">
                 <label for="nom" class="col-sm-2 control-label">Nom</label>
                 <div class="col-sm-8">

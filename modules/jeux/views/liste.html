@@ -17,7 +17,7 @@
                 <td>{{jeu.titre}}</td>
                 <td>{{jeu.description}}</td>
                 <td>{{jeu.date}}</td>
-                <td><img data-ng-src="data:image/jpeg;base64,{{jeu.image}}"/></td>
+                <td><img data-ng-src="{{jeu.image}}"/></td>
                 <td><a ng-click="afficherFenetre(key, jeu)"><i class="glyphicon glyphicon-edit"></i> Modifier</a> | <a ng-click="supprimerDepartement(key,jeu)"> <i class="glyphicon glyphicon-remove"></i> Supprimer</a></td>
             </tr>
         </tbody>

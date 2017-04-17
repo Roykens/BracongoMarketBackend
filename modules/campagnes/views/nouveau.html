@@ -1,8 +1,8 @@
 <div class="panel panel-primary">
     <div class="panel-heading" >
-        Ajout d'un nouveau jeux
+        Ajout d'une nouvelle Categorie
     </div>
-   
+
     <div class="panel-body">
         <form name="form" method="post" role="form" class="form-horizontal" novalidate>
             <div class="form-group">
@@ -12,31 +12,47 @@
                     
                 </div>
             </div>
-            
+
             <div class="form-group">
                 <label for="titre" class="col-sm-2 control-label">Titre</label>
                 <div class="col-sm-8">
-                    <input type="text" name="titre" id="titre" class="form-control" ng-model="jeu.titre" ng-required="true"/>
-                    <span class="error" ng-show="form.titre.$dirty && form.titre.$error.required">Le titre est obligatoire</span>
+                    <input type="text" name="titre" id="titre" class="form-control" ng-model="campagne.titre" ng-required="true"/>
+                    <span class="error" ng-show="form.titre.$dirty && form.titre.$error.required">Le Titre est obligatoire</span>
                 </div>
             </div>
             <div class="form-group">
                 <label for="description" class="col-sm-2 control-label">Description</label>
                 <div class="col-sm-8">
-                    <input type="text" name="description" id="description" class="form-control" ng-model="jeu.description" ng-required="true"/>
+                    <input type="text" name="description" id="description" class="form-control" ng-model="campagne.description" ng-required="true"/>
                     <span class="error" ng-show="form.description.$dirty && form.description.$error.required">La description est obligado</span>
                 </div>
             </div>
-         <div class="form-group">
+            <div class="form-group">
                 <label for="date" class="col-sm-2 control-label">Date</label>
                 <div class="col-sm-8">
-                    <input type="text" name="date" id="date" class="form-control" ng-model="jeu.date" ng-required="true"/>
+                    <input type="date" name="date" id="date" class="form-control" ng-model="campagne.date" />
                     <span class="error" ng-show="form.date.$dirty && form.date.$error.required">La date est obligado</span>
                 </div>
             </div>
-           <div class="form-group">
+            <div class="form-group">
+               <div class="col-sm-8">
+                    <label>Value1:
+                        <input type="checkbox" ng-model="campagne.hasVideo">
+                    </label>
+                </div>
+            </div>
+            
+            <div class="form-group" ng-show="campagne.hasVideo">
+                <label for="video" class="col-sm-2 control-label">URL Video</label>
+                <div class="col-sm-8">
+                    <input type="text" name="video" id="video" class="form-control" ng-model="campagne.video"/>
+                    <span class="error" ng-show="form.date.$dirty && form.date.$error.required">La date est obligado</span>
+                </div>
+            </div>
+
+            <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
-                    
+
                     <button type="submit" class="btn btn-primary"  ng-click="form.$valid && valider()">
                         <i class="glyphicon glyphicon-saved"></i> Enregistrer
                     </button>
